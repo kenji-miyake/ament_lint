@@ -28,7 +28,7 @@ def get_xunit_content(report, testname, elapsed):
                 data = {
                     'quoted_location': quoteattr(
                         '%s:%d' % (filename, error['linenum'])),
-                    'category': quoteattr(error['category']),
+                    'category': error['category'],
                     'confidence': error['confidence'],
                     'quoted_message': quoteattr(error['message']),
                 }
