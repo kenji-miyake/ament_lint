@@ -12,17 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-file(GLOB_RECURSE _source_files FOLLOW_SYMLINKS
-  "*.c"
-  "*.cc"
-  "*.cpp"
-  "*.cxx"
-  "*.h"
-  "*.hh"
-  "*.hpp"
-  "*.hxx"
-)
-if(_source_files)
-  message(" - Added test 'cpplint' to check C / C++ code against the Google style")
-  ament_cpplint()
-endif()
+from ament_pep8.main import main
+
+
+def test_pep8():
+    excluded = ['cpplint.py']
+    rc = main(argv=['--exclude'] + excluded)
+    assert rc == 0, 'Found code style errors / warnings'
