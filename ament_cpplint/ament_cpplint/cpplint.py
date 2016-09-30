@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (c) 2009 Google Inc. All rights reserved.
 #
@@ -68,7 +68,6 @@ try:
 except NameError:
   #  -- pylint: disable=redefined-builtin
   xrange = range  # Python 3
-
 
 _USAGE = """
 Syntax: cpplint.py [--verbose=#] [--output=emacs|eclipse|vs7|junit|sed|gsed]
@@ -1612,6 +1611,7 @@ class FileInfo(object):
             os.path.exists(os.path.join(current_dir, ".hg")) or
             os.path.exists(os.path.join(current_dir, ".svn"))):
           root_dir = current_dir
+          break
         current_dir = os.path.dirname(current_dir)
 
       if (os.path.exists(os.path.join(root_dir, ".git")) or
@@ -2845,7 +2845,7 @@ class _NamespaceInfo(_BlockInfo):
     # deciding what these nontrivial things are, so this check is
     # triggered by namespace size only, which works most of the time.
     if (linenum - self.starting_linenum < 10
-        and not Match(r'^\s*};*\s*(//|/\*).*\bnamespace\b', line)):
+        and not Match(r'^\s*};*\s*(//).*\bnamespace\b', line)):
       return
 
     # Look for matching comment at end of namespace.
@@ -2862,7 +2862,7 @@ class _NamespaceInfo(_BlockInfo):
     # expected namespace.
     if self.name:
       # Named namespace
-      if not Match((r'^\s*};*\s*(//|/\*).*\bnamespace\s+' +
+      if not Match((r'^\s*};*\s*(//).*\bnamespace\s+' +
                     re.escape(self.name) + r'[\*/\.\\\s]*$'),
                    line):
         error(filename, linenum, 'readability/namespace', 5,
@@ -5854,6 +5854,10 @@ def CheckCStyleCast(filename, clean_lines, linenum, cast_type, pattern, error):
   remainder = line[match.end(0):]
   if Match(r'^\s*(?:;|const\b|throw\b|final\b|override\b|[=>{),]|->)',
            remainder):
+    return False
+
+  # Don't warn in C files about C-style casts
+  if os.path.splitext(filename)[1] in ['.c', '.h']:
     return False
 
   # At this point, all that should be left is actual casts.
