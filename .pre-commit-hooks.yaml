@@ -1,0 +1,111 @@
+- id: ament_clang_format
+  name: ament_clang_format
+  description: Apply ament_clang_format.
+  entry: ament_clang_format
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_clang_format]
+
+- id: ament_clang_tidy
+  name: ament_clang_tidy
+  description: Apply ament_clang_tidy.
+  entry: ament_clang_tidy
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_clang_tidy]
+
+- id: ament_copyright
+  name: ament_copyright
+  description: Apply ament_copyright.
+  entry: ament_copyright
+  language: python
+  types_or: [c++, cmake, python]
+  additional_dependencies: [./ament_copyright]
+
+- id: ament_cppcheck
+  name: ament_cppcheck
+  description: Apply ament_cppcheck.
+  entry: ament_cppcheck
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_cppcheck]
+
+- id: ament_cpplint
+  name: ament_cpplint
+  description: Apply ament_cpplint.
+  entry: ament_cpplint
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_cpplint]
+
+- id: ament_flake8
+  name: ament_flake8
+  description: Apply ament_flake8.
+  entry: ament_flake8
+  language: python
+  types: [python]
+  additional_dependencies: [./ament_flake8]
+
+- id: ament_lint_cmake
+  name: ament_lint_cmake
+  description: Apply ament_lint_cmake.
+  entry: ament_lint_cmake
+  language: python
+  types: [cmake]
+  additional_dependencies: [./ament_lint_cmake]
+
+- id: ament_mypy
+  name: ament_mypy
+  description: Apply ament_mypy.
+  entry: ament_mypy
+  language: python
+  types: [python]
+  additional_dependencies: [./ament_mypy]
+
+- id: ament_pclint
+  name: ament_pclint
+  description: Apply ament_pclint.
+  entry: ament_pclint
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_pclint]
+
+- id: ament_pep257
+  name: ament_pep257
+  description: Apply ament_pep257.
+  entry: ament_pep257
+  language: python
+  types: [python]
+  additional_dependencies: [./ament_pep257]
+
+- id: ament_pycodestyle
+  name: ament_pycodestyle
+  description: Apply ament_pycodestyle.
+  entry: ament_pycodestyle
+  language: python
+  types: [python]
+  additional_dependencies: [./ament_pycodestyle]
+
+- id: ament_pyflakes
+  name: ament_pyflakes
+  description: Apply ament_pyflakes.
+  entry: ament_pyflakes
+  language: python
+  types: [python]
+  additional_dependencies: [./ament_pyflakes]
+
+- id: ament_uncrustify
+  name: ament_uncrustify
+  description: Apply ament_uncrustify.
+  entry: ament_uncrustify
+  language: python
+  types: [c++]
+  additional_dependencies: [./ament_uncrustify]
+
+- id: ament_xmllint
+  name: ament_xmllint
+  description: Apply ament_xmllint.
+  entry: ament_xmllint
+  language: python
+  types: [xml]
+  additional_dependencies: [./ament_xmllint]
